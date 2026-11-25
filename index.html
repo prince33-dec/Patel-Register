@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>if(!matchMedia("(prefers-reduced-motion:reduce)").matches)document.documentElement.className="js"</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patel Register – Offline staff attendance, overtime, loans & payroll app</title>
+<meta name="description" content="Patel Register is an offline Android app for staff attendance, overtime, loan khata and monthly payroll. No internet, no account. Download the APK.">
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0e1c3a;--paper:#f4f7fc;--deep:#0f2964;--brand:#1f4fb5;--brand2:#3d6fd8;--acc:#f2b632;--line:#d5deef;--card:#fff;--muted:#4f607f;--hl:#1f4fb5;--icbg:#e3ebfb}
+@media (prefers-color-scheme:dark){:root{--ink:#e8eefc;--paper:#08142e;--card:#10234f;--line:#27427d;--muted:#9fb2d9;--hl:#9dbcff;--icbg:#24408a}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.08;margin:0;letter-spacing:-.015em}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--acc);color:#2a1b00;font-weight:700;padding:15px 28px;border-radius:14px;text-decoration:none;font-size:17px;box-shadow:0 5px 0 #c58f0a;transition:transform .12s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #c58f0a}
+.btn.sm{padding:9px 18px;font-size:15px;box-shadow:none}
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(15,41,100,.94);backdrop-filter:blur(10px)}
+nav{display:flex;align-items:center;gap:26px;height:66px;color:#fff}
+.logo{font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none;display:flex;gap:10px;align-items:center;margin-right:auto}
+.logo img{border-radius:10px;display:block}
+.logo{color:var(--acc)}
+nav a.l{color:#c9d6f2;text-decoration:none;font-size:15px;font-weight:500}nav a.l:hover{color:#fff}
+/* hero */
+.hero{background:var(--deep);color:#fff;background-image:radial-gradient(rgba(255,255,255,.09) 1.2px,transparent 1.2px);background-size:26px 26px;overflow:hidden}
+.hg{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:60px 22px 90px}
+.hero h1{font-size:clamp(40px,6vw,72px);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.lead{font-size:20px;color:#c9d6f2;max-width:30em;margin:22px 0 32px}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:20px}
+.cta-row a.t{color:#fff;font-weight:700;text-underline-offset:5px}
+.meta{margin-top:18px;font-size:14px;color:#9fb4e0}
+.stage{position:relative;justify-self:center;padding:10px 40px}
+.phone{width:296px;border:10px solid #07173d;border-radius:42px;background:var(--card);color:var(--ink);box-shadow:0 40px 70px rgba(0,0,0,.45);transform:rotate(3deg);animation:rise .9s ease-out both}
+@keyframes rise{from{opacity:0;transform:translateY(40px) rotate(6deg)}}
+.notch{width:90px;height:6px;border-radius:9px;background:var(--line);margin:10px auto 0}
+.screen{padding:14px 16px 18px}
+.t{font:800 19px "Bricolage Grotesque",sans-serif}.screen small{color:var(--muted);font-size:12px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.pills span{font-size:12px;font-weight:700;border-radius:99px;padding:3px 10px}
+.g{background:#d9f5e3;color:#0d5a2b}.y{background:#fff0c2;color:#6b4a00}.r{background:#fddcdc;color:#8a1f1f}.b{background:#dfe6ff;color:#24348a}.n{background:#ececf3;color:#4a4a63}
+.st{display:flex;justify-content:space-between;border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;margin:8px 0;font-size:13px}.st b{font-size:15px}
+.wk{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:8px;font-size:14px}
+.wk div{display:flex;gap:5px;margin-top:7px}
+.wk i{font-style:normal;font-size:11px;font-weight:700;border-radius:7px;padding:4px 7px;border:1.5px solid var(--line)}
+.wk i.on{background:#1f4fb5;border-color:#1f4fb5;color:#fff}
+.chip{position:absolute;background:#fff;color:#16143a;font-weight:700;font-size:14px;border-radius:14px;padding:10px 14px;box-shadow:0 14px 30px rgba(0,0,0,.3);display:flex;gap:8px;align-items:center}
+.c1{left:-14px;top:70px}.c2{right:-6px;bottom:90px}
+/* facts strip */
+.facts{margin-top:-44px;position:relative;z-index:2}
+.fg{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border:1.5px solid var(--line);border-radius:20px;box-shadow:0 18px 40px rgba(15,41,100,.16)}
+.fg div{padding:22px 24px;border-right:1.5px solid var(--line)}.fg div:last-child{border:0}
+.fg b{display:block;font:800 22px "Bricolage Grotesque";color:var(--hl)}.fg span{font-size:14px;color:var(--muted)}
+section{padding:84px 0}
+h2.big{font-size:clamp(30px,4vw,48px);font-weight:800;max-width:15em}
+.sub{color:var(--muted);max-width:36em;margin:14px 0 0}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:40px}
+.f{grid-column:span 2;background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:26px}
+.f.w{grid-column:span 3}.f.dk{background:var(--deep);color:#fff;border-color:var(--deep)}.f.dk p{color:#c9d6f2}
+.ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:24px;margin-bottom:16px;background:var(--icbg)}
+.f.dk .ic{background:rgba(255,255,255,.12)}
+.f h3{font-size:22px;margin-bottom:8px}.f p{margin:0;color:var(--muted);font-size:16px}
+/* status */
+.band{background:var(--deep);color:#fff}.band .sub{color:#b4c6ec}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
+.s{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.14);border-radius:18px;padding:20px}
+.s h3{font-size:20px;display:flex;justify-content:space-between;align-items:center}
+.s h3 span{font:700 13px "DM Sans";padding:3px 11px;border-radius:99px;background:var(--acc);color:#2a1b00}
+.s p{margin:8px 0 0;color:#c9d6f2;font-size:15px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px;position:relative}
+.steps div{padding:0 28px 0 0;counter-increment:s}
+.steps div::before{content:counter(s);counter-increment:none;width:46px;height:46px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font:800 20px "Bricolage Grotesque";margin-bottom:18px;box-shadow:0 0 0 8px var(--paper)}
+.steps{counter-reset:s}.steps div{counter-increment:s}
+.steps h3{font-size:22px;margin-bottom:6px}.steps p{margin:0;color:var(--muted)}
+/* privacy */
+.priv{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.lock{background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:8px 26px}
+.lock div{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}.lock div:last-child{border:0}
+.lock b{display:block}.lock span{color:var(--muted);font-size:15px}.lock em{font-style:normal;font-size:24px}
+details{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:18px 22px;margin-top:12px;max-width:820px}
+summary{font-weight:700;cursor:pointer;font-size:18px}details p{margin:10px 0 0;color:var(--muted)}
+.final{background:linear-gradient(135deg,var(--brand),var(--deep));color:#fff;border-radius:30px;padding:64px 30px;text-align:center}
+.final h2{margin:0 auto 14px}.final p{margin:0 auto 30px;color:#d6e1f7;max-width:32em}
+footer{padding:32px 0 90px;font-size:14px;color:var(--muted);text-align:center}
+.bar{display:none}
+@media(max-width:860px){nav a.l{display:none}.hg,.priv{grid-template-columns:1fr}.hg{padding-top:36px}.fg{grid-template-columns:1fr 1fr}.fg div:nth-child(2){border-right:0}.fg div:nth-child(-n+2){border-bottom:1.5px solid var(--line)}
+.bento{grid-template-columns:1fr}.f,.f.w{grid-column:auto}.sg{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr;gap:28px}
+.bar{display:block;position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--deep);z-index:30}.bar .btn{width:100%;justify-content:center}}
+@media(max-width:520px){.sg{grid-template-columns:1fr}.stage{padding:10px 8px}.c1{left:0}.c2{right:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.phone{animation:none}}
+
+/* scroll animation */
+.js .rv{opacity:0;transform:translateY(34px) scale(.98);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.f,.s{transition:transform .25s,box-shadow .25s}.f:hover,.s:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(15,41,100,.18)}
+.chip{animation:bob 4.5s ease-in-out infinite}.c2{animation-delay:-2.2s}
+@keyframes bob{50%{translate:0 -10px}}
+header.sc{box-shadow:0 6px 24px rgba(0,0,0,.28)}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.chip{animation:none}}
+</style>
+</head>
+<body>
+<header><nav class="wrap" aria-label="Main">
+ <a class="logo" href="#top"><img src="icon.png" alt="" width="36" height="36">Patel Register</a>
+ <a class="l" href="#features">Features</a><a class="l" href="#pay">Pay rules</a><a class="l" href="#faq">FAQ</a>
+ <a class="btn sm" href="Patel_Register.apk" download>Download APK</a>
+</nav></header>
+
+<main id="top">
+<div class="hero"><div class="wrap hg">
+ <div>
+  <h1>Run your staff register <em>without the notebook.</em></h1>
+  <p class="lead">Mark attendance in one tap, track overtime and loans, and share a payroll PDF at month-end. It works offline, with no account, and your data stays on your phone.</p>
+  <div class="cta-row"><a class="btn" href="Patel_Register.apk" download>⬇ Download for Android</a><a class="t" href="#features">See features</a></div>
+  <p class="meta">Free APK · Works without internet · Android phones</p>
+ </div>
+ <div class="stage">
+  <div class="chip c1">📄 Payroll PDF ready</div>
+  <div class="phone" aria-hidden="true"><div class="notch"></div><div class="screen">
+   <div class="t">Your Shop Name</div><small>Today’s attendance</small>
+   <div class="pills"><span class="g">Present 18</span><span class="y">Half Day 2</span><span class="r">Absent 1</span><span class="b">Leave 1</span><span class="n">Pending 2</span></div>
+   <div class="st"><span>Active staff</span><b>24</b></div>
+   <div class="st"><span>Monthly payroll</span><b>₹4,86,000</b></div>
+   <div class="wk">Ramesh · Cashier<div><i class="on">Present</i><i>Half</i><i>Absent</i><i>Leave</i></div></div>
+   <div class="wk">Sunita · Helper<div><i>Present</i><i class="on">Half</i><i>Absent</i><i>Leave</i></div></div>
+  </div></div>
+  <div class="chip c2">🔒 PIN &amp; fingerprint lock</div>
+ </div>
+</div></div>
+
+<div class="wrap facts"><div class="fg">
+ <div><b>100% offline</b><span>No internet needed</span></div>
+ <div><b>1 tap</b><span>To mark attendance</span></div>
+ <div><b>Multi-page PDF</b><span>Payroll, loans and notes</span></div>
+ <div><b>No sign-up</b><span>Data stays on your device</span></div>
+</div></div>
+
+<section class="wrap" id="features">
+ <h2 class="big">Everything you need to pay staff right.</h2>
+ <p class="sub">From the first attendance tap to the signed monthly statement, in one app.</p>
+ <div class="bento">
+  <div class="f w dk"><div class="ic">👆</div><h3>1-tap attendance</h3><p>Mark Present, Half Day, Absent or Leave from Home or Register. Tap All Present to mark every active worker at once.</p></div>
+  <div class="f w"><div class="ic">⏱️</div><h3>Overtime your way</h3><p>Log extra hours at an automatic 1.5× rate or your own custom rate. Or enter a fixed rupee bonus instead.</p></div>
+  <div class="f"><div class="ic">📒</div><h3>Loan &amp; advance khata</h3><p>Loans, advances and repayments in one ledger, with total advances, repaid and outstanding due.</p></div>
+  <div class="f"><div class="ic">🧾</div><h3>Salary slips</h3><p>A monthly slip for every worker. Share it on WhatsApp or SMS in one tap.</p></div>
+  <div class="f"><div class="ic">📄</div><h3>Official PDF report</h3><p>A landscape PDF with payroll sheet, loan khata, daily notes and signature lines.</p></div>
+  <div class="f"><div class="ic">📅</div><h3>Fast Register view</h3><p>Switch days with arrows, the Mon–Sun strip or the calendar. Filter by name, phone or status.</p></div>
+  <div class="f"><div class="ic">📞</div><h3>Staff directory</h3><p>Photo, role, phone and notes. Call, WhatsApp or SMS from the card. Mark past staff Inactive and keep their history.</p></div>
+  <div class="f"><div class="ic">🔔</div><h3>Daily reminder</h3><p>A notification at the time you choose, so attendance is never missed.</p></div>
+  <div class="f w"><div class="ic">💾</div><h3>JSON backup &amp; restore</h3><p>Export or copy a full backup of staff, attendance and loans. Import it on a new phone to merge or fully restore.</p></div>
+  <div class="f w"><div class="ic">⚖️</div><h3>Two salary methods</h3><p>Pay by Calendar Days (28 to 31) or the 26-Day method that excludes weekly offs. Set it per employee.</p></div>
+ </div>
+</section>
+
+<section class="band" id="pay"><div class="wrap">
+ <h2 class="big">Every day is paid by a clear rule.</h2>
+ <p class="sub">Each attendance status has a fixed salary credit, so there are no surprises on payday.</p>
+ <div class="sg">
+  <div class="s"><h3>Present <span>1.0 day</span></h3><p>Full working day attended.</p></div>
+  <div class="s"><h3>Overtime <span>1.0 day + OT</span></h3><p>Full day plus extra hours or a fixed ₹ bonus.</p></div>
+  <div class="s"><h3>Half Day <span>0.5 day</span></h3><p>Half shift. Earns 50% of the daily rate.</p></div>
+  <div class="s"><h3>Paid Leave <span>1.0 day</span></h3><p>Approved off-day with no salary cut.</p></div>
+  <div class="s"><h3>Absent <span>0 days</span></h3><p>Unpaid. One day’s wage is deducted.</p></div>
+  <div class="s"><h3>Unmarked <span>0 days</span></h3><p>Not recorded yet. Shown as Pending on Home.</p></div>
+ </div>
+</div></section>
+
+<section class="wrap">
+ <h2 class="big">Set up in three steps.</h2>
+ <div class="steps">
+  <div><h3>Name your register</h3><p>Enter your shop or company name in Settings. It shows on Home, the lock screen and every PDF.</p></div>
+  <div><h3>Add your employees</h3><p>Enter name, role, phone and monthly salary, then pick the salary method.</p></div>
+  <div><h3>Mark attendance daily</h3><p>Tap a status for each worker. At month-end, open Reports and share the PDF.</p></div>
+ </div>
+</section>
+
+<section class="wrap" style="padding-top:20px"><div class="priv">
+ <div><h2 class="big">Private by design.</h2><p class="sub">Employee records, attendance, loans and PDFs stay on your device. There is no server and no account to create.</p></div>
+ <div class="lock">
+  <div><em>🔢</em><p style="margin:0"><b>4-digit PIN lock</b><span>With a security question, so a forgotten PIN never costs you data.</span></p></div>
+  <div><em>👆</em><p style="margin:0"><b>Fingerprint or face unlock</b><span>Quick access once PIN lock is on.</span></p></div>
+  <div><em>📴</em><p style="margin:0"><b>Works with no internet</b><span>Anywhere, any time.</span></p></div>
+  <div><em>🧹</em><p style="margin:0"><b>Clear All Data</b><span>Wipe everything for a fresh start.</span></p></div>
+ </div>
+</div></section>
+
+<section class="wrap" id="faq" style="padding-top:20px">
+ <h2 class="big">Common questions</h2>
+ <details><summary>Does it need internet?</summary><p>No. Everything works offline. The internet is only used when you share a PDF or slip through WhatsApp or SMS.</p></details>
+ <details><summary>Does the EMI cut salary automatically?</summary><p>No. A planned EMI is only recorded. Open the employee’s Payroll tab and tap Commit Monthly EMI for the month you want to deduct. The slip and PDF then update.</p></details>
+ <details><summary>Can Net Payable go below zero?</summary><p>No. Net Payable never drops below ₹0, and EMI is capped at the loan balance and at earned salary plus overtime.</p></details>
+ <details><summary>How do I move to a new phone?</summary><p>Export a JSON backup in Settings, then import it on the new phone. Keep “Replace all existing data” off to merge, or on for a clean restore.</p></details>
+ <details><summary>How do I install the APK?</summary><p>Download the file and open it. If Android asks, allow “Install unknown apps” for your browser, then tap Install.</p></details>
+</section>
+
+<section class="wrap" style="padding-top:10px"><div class="final">
+ <h2 class="big">Put your staff register in your pocket.</h2>
+ <p>Download Patel Register and mark today’s attendance in under a minute.</p>
+ <a class="btn" href="Patel_Register.apk" download>⬇ Download APK</a>
+</div></section>
+</main>
+<footer class="wrap">© <span id="yr"></span> Patel Register · Offline staff attendance, overtime, loans khata &amp; payroll register</footer>
+<div class="bar"><a class="btn" href="Patel_Register.apk" download>⬇ Download APK</a></div>
+<script>
+document.getElementById("yr").textContent=new Date().getFullYear();
+(function(){
+ var els=document.querySelectorAll("section h2.big,section .sub,.f,.s,.steps,.steps>div,.fg,.fg>div,.lock>div,details,.final,.priv>div:first-child,.lock");
+ var hdr=document.querySelector("header");
+ addEventListener("scroll",function(){hdr.classList.toggle("sc",scrollY>10)},{passive:true});
+ if(!("IntersectionObserver" in window)||!document.documentElement.classList.contains("js")){return}
+ els.forEach(function(e){e.classList.add("rv");var p=e.parentNode,i=Array.prototype.indexOf.call(p.children,e);e.style.setProperty("--d",(i%6)*0.09+"s")});
+ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+ els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
